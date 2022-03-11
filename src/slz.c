@@ -593,6 +593,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 		bit9 = 52; /* force literal dump */
 		goto final_lit_dump;
 	}
+	fprintf(stderr, "s1\n");fflush(stderr);
 
 	reset_refs(refs, size_refs);
 
@@ -667,7 +668,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 		}
 		//fprintf(stderr, "first=%d best=%d saved_total=%d\n", firstlen, bestlen, saved);
 #endif
-
+fprintf(stderr, "s2\n");fflush(stderr);
 		if ((uint32_t)ent != word) {
 		send_as_lit:
 			rem--;
@@ -680,7 +681,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 		/* We reject pos = last and pos > last+32768 */
 		if ((unsigned long)(pos - last - 1) >= 32768)
 			goto send_as_lit;
-
+fprintf(stderr, "s3\n");fflush(stderr);
 		/* Note: cannot encode a length larger than 258 bytes */
 		mlen = memmatch(in + pos + 4, in + last + 4, (rem > 258 ? 258 : rem) - 4) + 4;
 
@@ -702,7 +703,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 		 */
 		if ((dist & 0x1f) + (code >> 16) + 8 >= 8 * mlen + bit9)
 			goto send_as_lit;
-
+fprintf(stderr, "s4\n");fflush(stderr);
 		/* first, copy pending literals */
 		if (plit) {
 			/* Huffman encoding requires 9 bits for octets 144..255, so this
@@ -734,7 +735,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 		bit9 = 0;
 		rem -= mlen;
 		pos += mlen;
-
+fprintf(stderr, "s5\n");fflush(stderr);
 #ifndef UNALIGNED_FASTER
 #ifdef UNALIGNED_LE_OK
 		word = *(uint32_t *)&in[pos - 1];
@@ -762,7 +763,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 
 		plit = 0;
 	}
-
+fprintf(stderr, "s6\n");fflush(stderr);
 	strm->ilen += ilen;
 	free(refs);
 	return strm->outbuf - out;
