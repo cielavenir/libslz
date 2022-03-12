@@ -587,7 +587,6 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 	//long size_refs = sizeof(union ref) * (1 << HASH_BITS);
 	//union ref *refs = (union ref *)malloc(size_refs);
 #endif
-return ilen;
 
 	if (!strm->level) {
 		/* force to send as literals (eg to preserve CPU) */
@@ -757,6 +756,7 @@ fprintf(stderr, "s5\n");fflush(stderr);
 	}
 
  final_lit_dump:
+return ilen;
 	/* now copy remaining literals or mark the end */
 	if (plit) {
 		if (bit9 >= 52)
