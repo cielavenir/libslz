@@ -57,7 +57,7 @@ int slz_init(struct slz_stream *strm, int level, int format)
  */
 long slz_encode(struct slz_stream *strm, void *out,
                               const void *in, long ilen, int more)
-{
+{return 0;
 	long ret;
 
 	if (strm->format == SLZ_FMT_GZIP)
