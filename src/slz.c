@@ -756,7 +756,7 @@ fprintf(stderr, "s5\n");fflush(stderr);
 	}
 
  final_lit_dump:
-return ilen;
+//return ilen;
 	/* now copy remaining literals or mark the end */
 	if (plit) {
 		if (bit9 >= 52)
