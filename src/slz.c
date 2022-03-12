@@ -578,6 +578,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 	uint32_t plit = 0;
 	uint32_t bit9 = 0;
 	uint32_t dist, code;
+return 0;
 #if 0
 	union ref refs[1 << HASH_BITS];
 	long size_refs = sizeof(refs);
