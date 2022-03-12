@@ -557,6 +557,7 @@ void reset_refs(union ref *refs, long count)
 }
 
 #include <stdlib.h>
+union ref refs[1 << HASH_BITS];
 
 /* Compresses <ilen> bytes from <in> into <out> according to RFC1951. The
  * output result may be up to 5 bytes larger than the input, to which 2 extra
@@ -578,13 +579,13 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 	uint32_t plit = 0;
 	uint32_t bit9 = 0;
 	uint32_t dist, code;
-return 0;
-#if 0
-	union ref refs[1 << HASH_BITS];
+
+#if 1
+	//union ref refs[1 << HASH_BITS];
 	long size_refs = sizeof(refs);
 #else
-	long size_refs = sizeof(union ref) * (1 << HASH_BITS);
-	union ref *refs = (union ref *)malloc(size_refs);
+	//long size_refs = sizeof(union ref) * (1 << HASH_BITS);
+	//union ref *refs = (union ref *)malloc(size_refs);
 #endif
 
 	if (!strm->level) {
