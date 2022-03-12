@@ -39,7 +39,7 @@
 int slz_init(struct slz_stream *strm, int level, int format)
 {
 	int ret;
-
+printf("ssssss %d\n",sizeof(struct slz_stream));
 	if (format == SLZ_FMT_GZIP)
 		ret = slz_rfc1952_init(strm, level);
 	else if (format == SLZ_FMT_ZLIB)
