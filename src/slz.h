@@ -67,9 +67,7 @@ enum {
 	SLZ_FMT_DEFLATE, /* RFC1951: raw deflate, and no crc */
 };
 
-#if defined(__GNUC__)
 #pragma pack(push,4)
-#endif
 struct slz_stream {
 #ifdef USE_64BIT_QUEUE
 	uint64_t queue; /* last pending bits, LSB first */
@@ -85,9 +83,7 @@ struct slz_stream {
 	uint32_t crc32;
 	uint32_t ilen;
 };
-#if defined(__GNUC__)
 #pragma pack(pop)
-#endif
 
 /* Functions specific to rfc1951 (deflate) */
 void slz_prepare_dist_table(); /* obsolete, not needed anymore */
