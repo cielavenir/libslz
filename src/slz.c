@@ -57,7 +57,7 @@ int slz_init(struct slz_stream *strm, int level, int format)
  */
 long slz_encode(struct slz_stream *strm, void *out,
                               const void *in, long ilen, int more)
-{return 0;
+{
 	long ret;
 
 	if (strm->format == SLZ_FMT_GZIP)
@@ -587,6 +587,7 @@ long slz_rfc1951_encode(struct slz_stream *strm, unsigned char *out, const unsig
 	//long size_refs = sizeof(union ref) * (1 << HASH_BITS);
 	//union ref *refs = (union ref *)malloc(size_refs);
 #endif
+return ilen;
 
 	if (!strm->level) {
 		/* force to send as literals (eg to preserve CPU) */
