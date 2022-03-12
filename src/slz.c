@@ -767,7 +767,7 @@ fprintf(stderr, "s5\n");fflush(stderr);
 	}
 fprintf(stderr, "s6\n");fflush(stderr);
 	strm->ilen += ilen;
-	free(refs);
+	//free(refs);
 	return strm->outbuf - out;
 }
 
